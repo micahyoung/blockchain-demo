@@ -4,8 +4,6 @@ applications:
   health-check-type: process
   memory: 1024M
   disk_quota: 1024M
-  routes:
-  - route: blockchain-sender.cfapps.io
   buildpack: java_buildpack
   env:
     SPRING_APPLICATION_JSON: '{"config":{"nodeUrl":"http://10.243.232.56:8545"}}'

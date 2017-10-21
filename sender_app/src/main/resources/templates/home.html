@@ -5,12 +5,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <style>
         html,
-        body,
-        section {
+        body {
             height: 100%;
         }
 
         section {
+            height: 80%;
+
             display: flex;
             align-items: center;
             justify-content: center;
@@ -29,6 +30,18 @@
             text-overflow: ellipsis;
             overflow: hidden;
         }
+
+        footer {
+            height: 10%;
+            text-align: center;
+
+            display: grid;
+            grid-template-areas: "a a a";
+            grid-gap: 10px;
+            grid-auto-columns: 33%;
+        }
+
+
     </style>
 </head>
 <body>
@@ -91,9 +104,20 @@
             <dt>Value:</dt>
             <dd th:text="${lastTransactionValue}"/>
         </div>
-
     </dl>
 </section>
+<footer>
+    <div>
+        <img src="pivotal-cf.png"/>
+    </div>
+    <div>
+        <img src="quorum.png"/>
+    </div>
+    <div>
+        <img src="ethereum.png"/>
+    </div>
+</footer>
+
 </body>
 </html>
 

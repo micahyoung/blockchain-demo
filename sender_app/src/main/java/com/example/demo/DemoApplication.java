@@ -24,7 +24,7 @@ public class DemoApplication {
     EthereumService ethereumService;
 
     @RequestMapping(value = "/send", method = RequestMethod.POST)
-    public String send(@RequestParam(value = "wei") String wei, RedirectAttributes redirAttrs) throws IOException {
+    public String send(@RequestParam("wei") String wei, RedirectAttributes redirAttrs) throws IOException {
         String senderAccount = ethereumService.getAccount(0);
         String receiverAccount = ethereumService.getAccount(1);
         BigInteger value = Convert.toWei(wei, Convert.Unit.WEI).toBigInteger();
@@ -44,7 +44,7 @@ public class DemoApplication {
         return "redirect:/";
     }
 
-    @RequestMapping("/")
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(Model model) throws IOException {
         String senderAccount = ethereumService.getAccount(0);
         String receiverAccount = ethereumService.getAccount(1);

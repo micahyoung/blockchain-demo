@@ -47,60 +47,39 @@
 <body>
 <section>
     <dl>
-        <h2>Sender:</h2>
+        <h2>Contractor:</h2>
 
         <dt>Account:</dt>
         <dd th:text="${senderAccount}"></dd>
-        <dt>Balance:</dt>
-        <dd th:text="${senderBalance}"></dd>
 
-        <h2>Receiver:</h2>
+        <h2>Transfer:</h2>
 
-        <dt>Account:</dt>
-        <dd th:text="${receiverAccount}"></dd>
-        <dt>Balance:</dt>
-        <dd th:text="${receiverBalance}"></dd>
-
-        <div th:if="${pendingTransactionFrom == null}">
-            <h2>Transfer:</h2>
-
-            <form method="POST" action="/send">
+        <div>
+            <form method="POST" action="/privSend">
                 <dt>
-                    <label for="wei">Amount </label>
+                    <label for="receiverPubKey">Receiver PubKey</label>
                 </dt>
                 <dd>
-                    <input name="wei" type="number"/>
+                    <input name="receiverPubKey" type="text"/>
+                </dd>
+                <dt>
+                    <label for="value">Amount </label>
+                </dt>
+                <dd>
+                    <input name="value" type="number"/>
+                </dd>
+                <dd>
                     <input type="submit" value="Send"/>
                 </dd>
             </form>
         </div>
 
-        <div th:unless="${transactionHash == null}">
-            <dt>Transaction Hash:</dt>
-            <dd th:text="${transactionHash}"></dd>
-        </div>
-        <div th:unless="${transactionError == null}">
-            <dt>Transaction Error:</dt>
-            <dd th:text="${transactionError}"></dd>
-        </div>
 
-        <div th:unless="${pendingTransactionFrom == null}">
-            <h2>Pending transaction:</h2>
-            <dd></dd>
-            <dt> From:</dt>
-            <dd th:text="${pendingTransactionFrom}"/>
-            <dt>To:</dt>
-            <dd th:text="${pendingTransactionTo}"/>
-            <dt>Value:</dt>
-            <dd th:text="${pendingTransactionValue}"/>
-        </div>
-        <div th:unless="${lastTransactionFrom == null}">
+        <div th:unless="${lastContractAddress == null}">
             <h2>Completed transaction:</h2>
             <dd></dd>
-            <dt> From:</dt>
-            <dd th:text="${lastTransactionFrom}"/>
-            <dt>To:</dt>
-            <dd th:text="${lastTransactionTo}"/>
+            <dt>Contract Address:</dt>
+            <dd th:text="${lastContractAddress}"/>
             <dt>Value:</dt>
             <dd th:text="${lastTransactionValue}"/>
         </div>

@@ -79,11 +79,11 @@ public class EthereumService {
     }
 
 
-    public Optional<org.web3j.protocol.core.methods.response.Transaction> getLastTransaction(String account) throws IOException {
+    public Optional<org.web3j.protocol.core.methods.response.Transaction> getLastTransaction() throws IOException {
         return parity.ethGetTransactionByBlockNumberAndIndex(DefaultBlockParameterName.LATEST, BigInteger.ZERO).send().getTransaction();
     }
 
-    public Optional<org.web3j.protocol.core.methods.response.Transaction> getPendingTransaction(String senderAccount) throws IOException {
+    public Optional<org.web3j.protocol.core.methods.response.Transaction> getPendingTransaction() throws IOException {
         return parity.ethGetTransactionByBlockNumberAndIndex(DefaultBlockParameterName.PENDING, BigInteger.ZERO).send().getTransaction();
     }
 }

@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Blockchain Demo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        section {
+            height: 80%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        dl {
+            max-width: 350px;
+        }
+
+        dt {
+            font-weight: bold;
+        }
+
+        dd {
+            text-align: right;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        footer {
+            height: 10%;
+            text-align: center;
+
+            display: grid;
+            grid-template-areas: "a a a";
+            grid-gap: 10px;
+            grid-auto-columns: 33%;
+        }
+
+
+    </style>
+</head>
+<body>
+<section>
+    <dl>
+        <h2>Sender:</h2>
+
+        <dt>Account:</dt>
+        <dd th:text="${senderAccount}"></dd>
+        <dt>Balance (WEI):</dt>
+        <dd th:text="${senderBalance}"></dd>
+
+        <h2>Receiver:</h2>
+
+        <dt>Account:</dt>
+        <dd th:text="${receiverAccount}"></dd>
+        <dt>Balance (WEI):</dt>
+        <dd th:text="${receiverBalance}"></dd>
+
+        <div th:if="${pendingTransactionFrom == null}">
+            <h2>Transfer:</h2>
+
+            <form method="POST" action="/send">
+                <dt>
+                    <label for="wei">Amount </label>
+                </dt>
+                <dd>
+                    <input name="wei" type="number"/>
+                    <input type="submit" value="Send"/>
+                </dd>
+            </form>
+        </div>
+
+        <div th:unless="${transactionHash == null}">
+            <dt>Transaction Hash:</dt>
+            <dd th:text="${transactionHash}"></dd>
+        </div>
+        <div th:unless="${transactionError == null}">
+            <dt>Transaction Error:</dt>
+            <dd th:text="${transactionError}"></dd>
+        </div>
+
+        <div th:unless="${pendingTransactionFrom == null}">
+            <h2>Pending transaction:</h2>
+            <dd></dd>
+            <dt> From:</dt>
+            <dd th:text="${pendingTransactionFrom}"/>
+            <dt>To:</dt>
+            <dd th:text="${pendingTransactionTo}"/>
+            <dt>Value:</dt>
+            <dd th:text="${pendingTransactionValue}"/>
+        </div>
+        <div th:unless="${lastTransactionFrom == null}">
+            <h2>Completed transaction:</h2>
+            <dd></dd>
+            <dt> From:</dt>
+            <dd th:text="${lastTransactionFrom}"/>
+            <dt>To:</dt>
+            <dd th:text="${lastTransactionTo}"/>
+            <dt>Value:</dt>
+            <dd th:text="${lastTransactionValue}"/>
+        </div>
+    </dl>
+</section>
+<footer>
+    <div>
+        <img src="pivotal-cf.png"/>
+    </div>
+    <div>
+        <img src="quorum.png"/>
+    </div>
+    <div>
+        <img src="ethereum.png"/>
+    </div>
+</footer>
+
+</body>
+</html>
+

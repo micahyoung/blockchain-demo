@@ -7,7 +7,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class DemoConfiguration {
     @Bean
-    EthereumService ethereumService(@Value("${config.nodeUrl}") String senderAccountPassword, @Value("${config.senderAccountPassword}") String nodeUrl) {
-        return new EthereumService(senderAccountPassword, nodeUrl);
+    EthereumService ethereumService(@Value("${config.ethereumUrl}") String nodeUrl, @Value("${config.ethereumSenderAccountPassword}") String senderAccountPassword) {
+        return new EthereumService(nodeUrl, senderAccountPassword);
+    }
+
+    @Bean
+    QuorumService quorumService(@Value("${config.quorumUrl}") String nodeUrl) {
+        return new QuorumService(nodeUrl);
     }
 }

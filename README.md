@@ -6,4 +6,4 @@ Demo app featuring Quorum and Ethereum backend support
 
 * Pivotal Cloud Foundry
 * Etherum Service (https://github.com/micahyoung/ethereum-cf)
-* Quorum Service (https://github.com/micahyoung/ethereum-cf)
+* Quorum Service (https://github.com/micahyoung/quorum-pcf-7nodes)
